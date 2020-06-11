@@ -6,8 +6,10 @@ set (CMAKE_CXX_STANDARD 17)
 include(cmake/FindCPLEX.cmake)
 include(cmake/FindGUROBI.cmake)
 find_package(Eigen3 REQUIRED)
-add_subdirectory(third_party/abseil-cpp)
 
+if(NOT TARGET absl::strings)
+    add_subdirectory(third_party/abseil-cpp)
+endif()
 
 add_library(lp_wrappers INTERFACE)
 target_include_directories(

@@ -34,8 +34,9 @@ public:
         lb_mtr(M),
         ub_mtr(M),
         lbx_mtr(N),
-        ubx_mtr(N) {
-        A_mtr.setZero();
+        ubx_mtr(N),
+        soft_weights(M),
+        soft_convertible(M) {
         c_mtr.setZero();
         lbx_mtr.setConstant(N, minus_infinity);
         ubx_mtr.setConstant(N, infinity);
@@ -81,7 +82,7 @@ public:
         lb_mtr(constraint_idx) = low;
         ub_mtr(constraint_idx) = up;
         soft_convertible[constraint_idx] = is_soft_convertible;
-        soft_weight(constraint_idx) = soft_weight;
+        soft_weights(constraint_idx) = soft_weight;
     }
 
     void add_constraint(
