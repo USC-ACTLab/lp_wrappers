@@ -6,6 +6,8 @@ set (CMAKE_CXX_STANDARD 17)
 include(cmake/FindCPLEX.cmake)
 include(cmake/FindGUROBI.cmake)
 find_package(Eigen3 REQUIRED)
+add_subdirectory(third_party/abseil-cpp)
+
 
 add_library(lp_wrappers INTERFACE)
 target_include_directories(
@@ -22,6 +24,7 @@ target_link_libraries(
         ${CMAKE_DL_LIBS}
         ${GUROBI_CXX_LIBRARY}
         ${GUROBI_LIBRARY}
+        absl::strings
 )
 
 add_library(
