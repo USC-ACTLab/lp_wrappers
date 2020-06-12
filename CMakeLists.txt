@@ -42,12 +42,23 @@ target_include_directories(
 
 
 add_executable(
-    general_lp_solver
-    example/general_lp_solver.cpp
+    cplex_lp_multiple_times
+    example/cplex_lp_multiple_times.cpp
 )
 
 target_link_libraries(
-    general_lp_solver
+    cplex_lp_multiple_times
+    PUBLIC
+    lp_wrappers
+)
+
+add_executable(
+    gurobi_lp_multiple_times
+    example/gurobi_lp_multiple_times.cpp
+)
+
+target_link_libraries(
+    gurobi_lp_multiple_times
     PUBLIC
     lp_wrappers
 )
